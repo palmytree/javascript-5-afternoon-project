@@ -157,15 +157,8 @@ class Machine {
     this.needs_reboot = false;
   }
   makeWidgets(num){
-    let startCount = this.widgets_made_count;
     this.widgets_made_count += num
-    if (num >= 50 - (startCount % 50)) {
-      if (num < 50) {
-        this.wear_and_tear_count++
-      } else {
-        this.wear_and_tear_count += Math.floor(num/50)
-      }
-    }
+    this.wear_and_tear_count = Math.floor(this.widgets_made_count / 50)
   }
   fixMachine(){
     this.needs_reboot = true
